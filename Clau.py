@@ -25,9 +25,9 @@ import pyaudio
 from collections import Counter
 import hashlib
 
-# ============================================= 
+
 # CONFIGURAÇÕES 
-# ============================================= 
+
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
@@ -37,9 +37,8 @@ CONFIG_FILE = "config.json"
 LEARNING_FILE = "learning_data.json"
 VOICE_PROFILES_FILE = "voice_profiles.json"
 
-# ============================================= 
 # ESTADO GLOBAL 
-# ============================================= 
+ 
 
 recording = False
 playing = False
@@ -65,9 +64,8 @@ pause_event = threading.Event()
 mouse_controller = MouseController()
 keyboard_controller = KeyboardController()
 
-# ============================================= 
 # FUNÇÕES BÁSICAS 
-# ============================================= 
+
 
 def log(msg, level="INFO"):
     """Adiciona mensagem ao log com cores"""
@@ -155,9 +153,9 @@ def delete_selected_task():
             else:
                 log(f"❌ Falha ao excluir tarefa '{task_name}'", "ERROR")
 
-# ============================================= 
+
 # SISTEMA DE APRENDIZADO AVANÇADO 
-# ============================================= 
+
 
 class LearningSystem:
     def __init__(self):
@@ -492,9 +490,9 @@ class LearningSystem:
             "learning_progress": min(100, total_executions * 2)
         }
 
-# ============================================= 
+
 # SISTEMA DE VOZ AVANÇADO
-# ============================================= 
+
 
 class VoiceSystem:
     def __init__(self):
@@ -845,9 +843,9 @@ class VoiceSystem:
         except:
             return []
 
-# ============================================= 
+
 # FUNÇÕES DE APRENDIZADO E ENSINO 
-# ============================================= 
+
 
 def start_teaching():
     """Inicia modo de ensino com feedback visual"""
@@ -922,9 +920,9 @@ def name_learned_activity():
     ctk.CTkButton(dialog, text="Salvar", command=save_name, width=100, height=40).pack(pady=20)
     dialog.bind('<Return>', lambda e: save_name())
 
-# ============================================= 
+
 # FUNÇÕES DE CONTROLE (PAUSA/CONTINUAR) 
-# ============================================= 
+
 
 def toggle_pause():
     """Pausa ou continua execução"""
@@ -952,9 +950,8 @@ def wait_if_paused():
         log("⏸ Aguardando continuar...", "INFO")
         pause_event.wait()
 
-# ============================================= 
 # CAPTURA DE AÇÕES 
-# ============================================= 
+
 
 def on_move(x, y):
     """Captura movimentos do mouse"""
@@ -1076,9 +1073,9 @@ def stop_recording():
     else:
         log("⚠ Nenhuma ação foi gravada", "WARNING")
 
-# ============================================= 
+
 # EXECUÇÃO DE TAREFAS 
-# ============================================= 
+
 
 def execute_task_voice(task_name):
     """Executa tarefa por comando de voz"""
@@ -1203,9 +1200,9 @@ def stop_execution():
     else:
         voice_system.speak("Não há execução em andamento.", "error")
 
-# ============================================= 
+
 # FUNÇÕES AUXILIARES E DIAGNÓSTICO 
-# ============================================= 
+
 
 def toggle_voice_system():
     """Alterna sistema de voz"""
@@ -1363,16 +1360,16 @@ def show_learning_report():
     ctk.CTkLabel(stats_frame, text=message, font=ctk.CTkFont(size=12), text_color="#3b82f6").pack(pady=10)
     ctk.CTkButton(report_window, text="Fechar", command=report_window.destroy).pack(pady=20)
 
-# ============================================= 
+
 # INICIALIZAR SISTEMAS 
-# ============================================= 
+
 
 learning_system = LearningSystem()
 voice_system = VoiceSystem()
 
-# ============================================= 
+
 # INTERFACE GRÁFICA AVANÇADA 
-# ============================================= 
+
 
 app = ctk.CTk()
 app.title("🤖 Clau - Assistente RPA Inteligente v9.0")
@@ -1485,9 +1482,9 @@ footer.grid(row=3, column=0, padx=25, pady=(0, 20), sticky="ew")
 footer_text = "💡 Dica: Diga 'Clau' seguido do comando. Exemplo: 'Clau, execute cadastro de cliente'"
 ctk.CTkLabel(footer, text=footer_text, font=ctk.CTkFont(size=13), text_color="#6b7280").pack(pady=20)
 
-# ============================================= 
+
 # FUNÇÕES ADICIONAIS 
-# ============================================= 
+
 
 def save_log_to_file():
     """Salva o log em um arquivo"""
